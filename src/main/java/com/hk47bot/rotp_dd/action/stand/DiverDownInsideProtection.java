@@ -46,16 +46,18 @@ public class DiverDownInsideProtection extends StandEntityAction {
         if (!world.isClientSide()){
             if (standEntity instanceof DiverDownEntity) {
                 DiverDownEntity diver = (DiverDownEntity)standEntity;
-                        LivingEntity effectTarget = diver.getTargetInside();
-                        target = effectTarget;
-                            if (hurtConditions()){
-                                source.bypassArmor();
-                                user.hurt(source, damage/2);
-                        }
-                        effectTarget.addEffect(new EffectInstance(Effects.DAMAGE_RESISTANCE, 5, 2));
-                    }
+                LivingEntity effectTarget = diver.getTargetInside();
+                target = effectTarget;
+                if (hurtConditions()){
+                    source.bypassArmor();
+                    user.hurt(source, damage/2);
+                }
+                if (effectTarget != null) {
+                    effectTarget.addEffect(new EffectInstance(Effects.DAMAGE_RESISTANCE, 5, 2));
                 }
             }
+        }
+    }
         
     
     @SubscribeEvent
