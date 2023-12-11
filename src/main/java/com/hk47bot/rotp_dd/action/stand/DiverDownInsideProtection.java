@@ -1,3 +1,5 @@
+// тут короче не работает считывание урона
+
 package com.hk47bot.rotp_dd.action.stand;
 
 import com.github.standobyte.jojo.action.ActionConditionResult;
