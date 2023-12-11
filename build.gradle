@@ -1,3 +1,5 @@
+// а тут я не могу поменять название и версию мода, его банально крашит
+
 buildscript {
     repositories {
         maven { url = 'https://maven.minecraftforge.net' }
