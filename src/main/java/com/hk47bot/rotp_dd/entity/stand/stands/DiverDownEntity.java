@@ -6,6 +6,8 @@ import com.github.standobyte.jojo.entity.stand.StandEntity;
 import com.github.standobyte.jojo.entity.stand.StandEntityType;
 import com.github.standobyte.jojo.init.ModStatusEffects;
 
+import com.hk47bot.rotp_dd.action.stand.DiverDownWallGlide;
+import com.hk47bot.rotp_dd.init.InitStands;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
@@ -108,16 +110,13 @@ public class DiverDownEntity extends StandEntity {
     }
 
     public boolean isInside(){
-        if (targetInside != null){
-            return true;
-        }
-        return false;
+        return targetInside != null;
     }
 
     @Override
     public void updatePosition() {
         if (targetInside != null) {
-            if (targetInside.isAlive()) {
+            if (targetInside.isAlive() && !isBeingRetracted() && this.getRangeEfficiency() > 0.1) {
                 Vector3d targetPos = targetInside.position();
                 setPos(targetPos.x, targetPos.y, targetPos.z);
                 setRot(targetInside.yRot, targetInside.xRot);
@@ -132,10 +131,13 @@ public class DiverDownEntity extends StandEntity {
         
         super.updatePosition();
     }
-    
+    public boolean diverIsGliding() {
+        return this.getCurrentTaskAction() == InitStands.DIVER_DOWN_GLIDE.get();
+
+    }
     @Override
     public boolean isFollowingUser() {
-        return super.isFollowingUser() && targetInside == null;
+        return super.isFollowingUser() && targetInside == null && !diverIsGliding();
     }
 
     @Override 
