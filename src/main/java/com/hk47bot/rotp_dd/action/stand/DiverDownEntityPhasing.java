@@ -14,10 +14,10 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.world.World;
 
-public class DiverDownGetIntoMob extends StandEntityAction {
+public class DiverDownEntityPhasing extends StandEntityAction {
     public LivingEntity user;
     public LivingEntity targetent;
-    public DiverDownGetIntoMob(StandEntityAction.Builder builder) {
+    public DiverDownEntityPhasing(StandEntityAction.Builder builder) {
         super(builder);
     }
        @Override
