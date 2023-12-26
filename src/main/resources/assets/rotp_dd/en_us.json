@@ -1,0 +1,17 @@
+{
+  "entity.rotp_dd.diver_down" : "Diver Down",
+  "stand.rotp_dd.diver_down" : "Diver Down",
+
+  "action.rotp_dd.diver_down_punch": "Punch",
+  "action.rotp_dd.diver_down_barrage": "Punch Barrage",
+  "action.rotp_dd.diver_down_heavy_punch" : "Heavy Punch",
+  "action.rotp_dd.diver_down_deform_dash" : "Deform Dash",
+  "action.rotp_dd.diver_down_block" : "Block",
+  "action.rotp_dd.diver_down_glide" : "Wall Glide",
+  "action.rotp_dd.diver_down_entity_phasing" : "Get Into Mob",
+  "action.rotp_dd.diver_down_protection" : "Mob Protection",
+  "action.rotp_dd.diver_down_retract" : "Retract Stand",
+
+  "jojo.message.action_condition.dd_self" : "I don't need to use it on myself",
+  "jojo.message.action_condition.dd_notinside" : "Diver needs to be inside the mob to use it"
+}
