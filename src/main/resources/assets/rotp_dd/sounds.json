@@ -1,0 +1,49 @@
+{
+    "anasui_diver_down": {
+        "sounds": [ "rotp_dd:stand_user/anasui_diver_down", "rotp_dd:stand_user/anasui_diver_down_2" ]
+    },
+    "anasui_diver_punch_light": {
+        "sounds": [ "rotp_dd:stand_user/anasui_light_punch", "rotp_dd:stand_user/anasui_light_punch_2", "rotp_dd:stand_user/anasui_light_punch_3", "rotp_dd:stand_user/anasui_light_punch_4" ]
+    },
+    "anasui_diver_punch_heavy": {
+        "sounds": [ "rotp_dd:stand_user/anasui_heavy_punch", "rotp_dd:stand_user/anasui_heavy_punch_2" ]
+    },
+    "anasui_diver_deform_dash": {
+        "sounds": ["rotp_dd:stand_user/anasui_deform_dash"]
+    },
+    "anasui_diver_entity_phasing": {
+        "sounds": ["rotp_dd:stand_user/anasui_entity_phasing"]
+    },
+    "anasui_diver_retract": {
+        "sounds": ["rotp_dd:stand_user/anasui_diver_retract"]
+    },
+
+
+    "diver_down_summon":{
+        "sounds": ["rotp_dd:stand/diver_down_summon"]
+    },
+    "diver_down_unsummon": {
+        "sounds": ["rotp_dd:stand/diver_down_unsummon"]
+    },
+    "diver_down_punch_light": {
+        "sounds": [ "rotp_dd:stand/diver_down_light_punch", "rotp_dd:stand/diver_down_light_punch_1" ]
+    },
+    "diver_down_punch_heavy": {
+        "sounds": ["rotp_dd:stand/diver_down_heavy_punch"]
+    },
+    "diver_down_deform_dash": {
+        "sounds": ["rotp_dd:stand/diver_down_deform_dash"]
+    },
+    "diver_down_glide": {
+        "sounds": ["rotp_dd:stand/diver_down_glide"]
+    },
+    "diver_down_entity_phasing": {
+        "sounds": ["rotp_dd:stand/diver_down_entity_phasing"]
+    },
+    "diver_down_inside_protection": {
+        "sounds": ["rotp_dd:stand/diver_down_inside_protection"]
+    },
+    "diver_down_retract": {
+        "sounds": [ "rotp_dd:stand/diver_down_retact"]
+    }
+}
