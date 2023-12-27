@@ -10,8 +10,8 @@ import com.hk47bot.rotp_dd.entity.stand.stands.DiverDownEntity;
 
 import net.minecraft.world.World;
 
-public class DiverDownReturnFromMob extends StandEntityAction {
-    public DiverDownReturnFromMob(StandEntityAction.Builder builder) {
+public class DiverDownRetract extends StandEntityAction {
+    public DiverDownRetract(StandEntityAction.Builder builder) {
         super(builder);
     }
     @Override
