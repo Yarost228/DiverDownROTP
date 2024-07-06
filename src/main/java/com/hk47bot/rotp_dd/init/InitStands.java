@@ -15,11 +15,7 @@ import com.github.standobyte.jojo.power.impl.stand.stats.StandStats;
 import com.github.standobyte.jojo.power.impl.stand.type.EntityStandType;
 import com.github.standobyte.jojo.power.impl.stand.type.StandType;
 import com.hk47bot.rotp_dd.RotpDiverDownAddon;
-import com.hk47bot.rotp_dd.action.stand.DiverDownDeformDash;
-import com.hk47bot.rotp_dd.action.stand.DiverDownEntityPhasing;
-import com.hk47bot.rotp_dd.action.stand.DiverDownInsideProtection;
-import com.hk47bot.rotp_dd.action.stand.DiverDownRetract;
-import com.hk47bot.rotp_dd.action.stand.DiverDownWallGlide;
+import com.hk47bot.rotp_dd.action.stand.*;
 import com.hk47bot.rotp_dd.entity.stand.stands.DiverDownEntity;
 
 import net.minecraftforge.fml.RegistryObject;
@@ -44,8 +40,8 @@ public class InitStands {
             () -> new StandEntityMeleeBarrage(new StandEntityMeleeBarrage.Builder()
                     .barrageHitSound(InitSounds.DIVER_DOWN_BARRAGE)));
 
-    public static final RegistryObject<StandEntityAction> DIVER_DOWN_BLOCK = ACTIONS.register("diver_down_block", 
-            () -> new StandEntityBlock());
+    public static final RegistryObject<StandEntityAction> DIVER_DOWN_BLOCK = ACTIONS.register("diver_down_block",
+            () -> new DiverDownBlock(new StandEntityAction.Builder()));
 
     public static final RegistryObject<StandEntityAction> DIVER_DOWN_GLIDE = ACTIONS.register("diver_down_glide", 
      () -> new DiverDownWallGlide(new StandEntityAction.Builder()
@@ -54,11 +50,10 @@ public class InitStands {
              .resolveLevelToUnlock(2)
              .standSound(InitSounds.DIVER_DOWN_WALL_GLIDE)));
 
-     public static final RegistryObject<StandEntityAction> DIVER_DOWN_PROTECTION = ACTIONS.register("diver_down_protection", 
-     () -> new DiverDownInsideProtection(new StandEntityAction.Builder()
-             .standSound(InitSounds.DIVER_DOWN_INSIDE_PROTECTION)
-             .shiftVariationOf(DIVER_DOWN_BLOCK)
-             .resolveLevelToUnlock(4)));
+    public static final RegistryObject<StandEntityAction> DIVER_DOWN_PROTECTION = ACTIONS.register("diver_down_protection",
+            () -> new DiverDownInsideProtection(new StandEntityAction.Builder()
+                    .standSound(InitSounds.DIVER_DOWN_INSIDE_PROTECTION)
+                    .resolveLevelToUnlock(4)));
 
           public static final RegistryObject<StandEntityAction> DIVER_DOWN_ENTITY_PHASING = ACTIONS.register("diver_down_entity_phasing",
      () -> new DiverDownEntityPhasing(new StandEntityAction.Builder()
@@ -69,8 +64,7 @@ public class InitStands {
      public static final RegistryObject<DiverDownRetract> DIVER_DOWN_RETRACT = ACTIONS.register("diver_down_retract",
      () -> new DiverDownRetract(new DiverDownRetract.Builder()
              .shout(InitSounds.ANASUI_DIVER_RETRACT)
-             .standSound(InitSounds.DIVER_DOWN_RETRACT)
-             .shiftVariationOf(DIVER_DOWN_ENTITY_PHASING)));
+             .standSound(InitSounds.DIVER_DOWN_UNSUMMON)));
      
      public static final RegistryObject<StandEntityHeavyAttack> DIVER_DOWN_DEFORM_DASH = ACTIONS.register("diver_down_deform_dash", 
      () -> new DiverDownDeformDash(new StandEntityHeavyAttack.Builder()
@@ -81,7 +75,7 @@ public class InitStands {
     public static final RegistryObject<StandEntityHeavyAttack> DIVER_DOWN_HEAVY_PUNCH = ACTIONS.register("diver_down_heavy_punch",
             () -> new StandEntityHeavyAttack(new StandEntityHeavyAttack.Builder()
                     .shout(InitSounds.ANASUI_DIVER_HEAVY_PUNCH)
-                    .standSound(InitSounds.DIVER_DOWN_PUNCH_HEAVY)
+                    .punchSound(InitSounds.DIVER_DOWN_PUNCH_HEAVY)
                     .shiftVariationOf(DIVER_DOWN_PUNCH)
                     .shiftVariationOf(DIVER_DOWN_BARRAGE)
                     .partsRequired(StandPart.ARMS)
@@ -102,17 +96,16 @@ public class InitStands {
 
                                     },
                             new StandAction[] {
-                                    DIVER_DOWN_BLOCK.get(),
+                                    DIVER_DOWN_PROTECTION.get(),
                                     DIVER_DOWN_GLIDE.get(),
                                     DIVER_DOWN_ENTITY_PHASING.get()
-
                                     },
 
                             StandStats.class, new StandStats.Builder()
                             .tier(5)
                             .power(14.0)
                             .speed(14.0)
-                            .range(2.5, 4.0)
+                            .range(10.0, 10.0)
                             .durability(9.0)
                             .precision(13.0)
                             .build("Diver Down"), 

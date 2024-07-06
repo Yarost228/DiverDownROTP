@@ -19,7 +19,6 @@ public class RotpDiverDownAddon {
 
     public RotpDiverDownAddon() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
         InitEntities.ENTITIES.register(modEventBus);
         InitSounds.SOUNDS.register(modEventBus);
         InitStands.ACTIONS.register(modEventBus);

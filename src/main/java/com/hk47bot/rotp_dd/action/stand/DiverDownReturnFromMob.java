@@ -10,17 +10,16 @@ import com.hk47bot.rotp_dd.entity.stand.stands.DiverDownEntity;
 
 import net.minecraft.world.World;
 
-public class DiverDownRetract extends StandEntityAction {
-    public DiverDownRetract(StandEntityAction.Builder builder) {
+public class DiverDownReturnFromMob extends StandEntityAction {
+    public DiverDownReturnFromMob(StandEntityAction.Builder builder) {
         super(builder);
     }
     @Override
     protected ActionConditionResult checkStandConditions(StandEntity stand, IStandPower power, ActionTarget target) {
         if (stand instanceof DiverDownEntity){
             DiverDownEntity diver = (DiverDownEntity)stand;
-            if (diver.isInside()){
-                return ActionConditionResult.POSITIVE;
-            }
+            if (diver.isInside())
+            return ActionConditionResult.POSITIVE;
         }
         return conditionMessage("dd_notinside");
     }
