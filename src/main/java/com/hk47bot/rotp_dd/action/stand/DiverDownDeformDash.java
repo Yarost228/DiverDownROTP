@@ -1,5 +1,6 @@
 package com.hk47bot.rotp_dd.action.stand;
 
+import com.github.standobyte.jojo.action.Action;
 import com.github.standobyte.jojo.action.ActionConditionResult;
 import com.github.standobyte.jojo.action.ActionTarget;
 import com.github.standobyte.jojo.action.stand.StandEntityHeavyAttack;
@@ -12,6 +13,8 @@ import com.github.standobyte.jojo.util.general.MathUtil;
 import com.github.standobyte.jojo.util.mc.damage.StandEntityDamageSource;
 import com.github.standobyte.jojo.util.mod.JojoModUtil;
 
+import com.hk47bot.rotp_dd.entity.stand.stands.DiverDownEntity;
+import com.hk47bot.rotp_dd.init.InitStands;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.potion.EffectInstance;
@@ -21,6 +24,8 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeMod;
 
+import javax.annotation.Nullable;
+
 public class DiverDownDeformDash extends StandEntityHeavyAttack{
 
     public DiverDownDeformDash(StandEntityHeavyAttack.Builder builder) {
@@ -29,6 +34,19 @@ public class DiverDownDeformDash extends StandEntityHeavyAttack{
     @Override
     public int getStandWindupTicks(IStandPower standPower, StandEntity standEntity) {
         return 0;
+    }
+
+    @Nullable
+    @Override
+    public Action<IStandPower> getVisibleAction(IStandPower power, ActionTarget target) {
+        DiverDownEntity diverDown = (DiverDownEntity) power.getStandManifestation();
+        if (diverDown != null) {
+            if (diverDown.isInside()) {
+                return InitStands.DIVER_DOWN_MOB_DISASSEMBLE.get();
+            }
+            return super.getVisibleAction(power, target);
+        }
+        return super.getVisibleAction(power, target);
     }
     
     @Override
@@ -111,10 +129,7 @@ public class DiverDownDeformDash extends StandEntityHeavyAttack{
     protected boolean canBeQueued(IStandPower standPower, StandEntity standEntity) {
         return false;
     }
-
-    protected boolean lastTargetCheck(ActionTarget target, StandEntity standEntity, IStandPower standPower) {
-        return false;
-    }
+    
     
     @Override
     protected boolean standMovesByItself(IStandPower standPower, StandEntity standEntity) {
