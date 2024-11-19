@@ -1,8 +1,5 @@
 package com.hk47bot.rotp_dd.action.stand;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.github.standobyte.jojo.action.Action;
 import com.github.standobyte.jojo.action.ActionConditionResult;
 import com.github.standobyte.jojo.action.ActionTarget;
@@ -12,19 +9,14 @@ import com.github.standobyte.jojo.client.sound.ClientTickingSoundsHelper;
 import com.github.standobyte.jojo.entity.stand.StandEntity;
 import com.github.standobyte.jojo.entity.stand.StandEntityTask;
 import com.github.standobyte.jojo.power.impl.stand.IStandPower;
-import com.github.standobyte.jojo.util.mc.damage.DamageUtil;
-import com.github.standobyte.jojo.util.mc.damage.StandLinkDamageSource;
-import com.hk47bot.rotp_dd.RotpDiverDownAddon;
 import com.hk47bot.rotp_dd.entity.stand.stands.DiverDownEntity;
 import com.hk47bot.rotp_dd.init.InitSounds;
 import com.hk47bot.rotp_dd.init.InitStands;
 
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
 import javax.annotation.Nullable;
 
-@EventBusSubscriber(modid = RotpDiverDownAddon.MOD_ID)
 public class DiverDownInsideProtection extends StandEntityAction {
     
     public DiverDownInsideProtection(Builder builder) {
@@ -35,8 +27,8 @@ public class DiverDownInsideProtection extends StandEntityAction {
     @Override
     public Action<IStandPower> getVisibleAction (IStandPower power, ActionTarget target) {
         DiverDownEntity diverDown = (DiverDownEntity) power.getStandManifestation();
-        if (diverDown != null){
-            if (diverDown.isInside()){
+        if (diverDown != null) {
+            if (diverDown.isInside()) {
                 return super.getVisibleAction(power, target);
             }
             return InitStands.DIVER_DOWN_BLOCK.get();
