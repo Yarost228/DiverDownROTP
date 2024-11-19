@@ -6,14 +6,11 @@ import com.github.standobyte.jojo.action.ActionTarget;
 import com.github.standobyte.jojo.action.stand.StandEntityAction;
 import com.github.standobyte.jojo.entity.stand.StandEntity;
 import com.github.standobyte.jojo.entity.stand.StandEntityTask;
-import com.github.standobyte.jojo.init.ModStatusEffects;
 import com.github.standobyte.jojo.power.impl.stand.IStandPower;
 import com.hk47bot.rotp_dd.entity.stand.stands.DiverDownEntity;
-
 import com.hk47bot.rotp_dd.init.InitStands;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.potion.EffectInstance;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -47,7 +44,7 @@ public class DiverDownEntityPhasing extends StandEntityAction {
             }
             return InitStands.DIVER_DOWN_RETRACT.get();
         }
-        return InitStands.DIVER_DOWN_RETRACT.get();
+        return super.getVisibleAction(power, target);
     }
 
     @Override
@@ -57,18 +54,14 @@ public class DiverDownEntityPhasing extends StandEntityAction {
 
     @Override
     public void standPerform(World world, StandEntity standEntity, IStandPower userPower, StandEntityTask task) {
-        if (!world.isClientSide()){
-            user = userPower.getUser();
-            ActionTarget target = task.getTarget();
-            if (target.getEntity() instanceof LivingEntity){
-                LivingEntity effectTarget = (LivingEntity) target.getEntity();
-                targetent = effectTarget;
-                if (standEntity instanceof DiverDownEntity){
-                DiverDownEntity diver = (DiverDownEntity) standEntity;
-                diver.setTargetInside(effectTarget);
-                diver.addEffect(new EffectInstance(ModStatusEffects.FULL_INVISIBILITY.get(), 20, 20));
-                
-                }
+        user = userPower.getUser();
+        ActionTarget target = task.getTarget();
+        if (target.getEntity() instanceof LivingEntity){
+            LivingEntity effectTarget = (LivingEntity) target.getEntity();
+            targetent = effectTarget;
+            if (standEntity instanceof DiverDownEntity){
+            DiverDownEntity diver = (DiverDownEntity) standEntity;
+            diver.setTargetInside(effectTarget);
             }
         }
     }
