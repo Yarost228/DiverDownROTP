@@ -1,5 +1,6 @@
 package com.hk47bot.rotp_dd;
 
+import com.hk47bot.rotp_dd.init.InitEffects;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -23,6 +24,7 @@ public class RotpDiverDownAddon {
         InitSounds.SOUNDS.register(modEventBus);
         InitStands.ACTIONS.register(modEventBus);
         InitStands.STANDS.register(modEventBus);
+        InitEffects.EFFECTS.register(modEventBus);
     }
 
     public static Logger getLogger() {

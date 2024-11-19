@@ -64,8 +64,8 @@ public class DiverDownModel extends HumanoidStandModel<DiverDownEntity> {
 
 		rightLeg.texOffs(45, 101).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, 0.0F, false);
 
-		rightLegJoint.texOffs(47, 121).addBox(-1.5F, -1.375F, -0.5F, 3.0F, 3.0F, 3.0F, -0.1F, false);
-		rightLegJoint.texOffs(49, 96).addBox(-1.5F, -1.625F, -1.5F, 3.0F, 3.0F, 1.0F, -0.2F, false);
+		rightLegJoint.texOffs(47, 121).addBox(-1.5F, -1.5F, -1.5F, 3.0F, 3.0F, 3.0F, -0.1F, false);
+		rightLegJoint.texOffs(49, 96).addBox(-1.5F, -1.75F, -2.5F, 3.0F, 3.0F, 1.0F, -0.2F, false);
 
 		rightLowerLeg.texOffs(45, 111).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, 0.0F, false);
 	}
