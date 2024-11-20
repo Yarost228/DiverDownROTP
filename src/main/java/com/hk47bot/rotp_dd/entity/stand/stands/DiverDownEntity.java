@@ -105,7 +105,7 @@ public class DiverDownEntity extends StandEntity {
                 retractStand(false);
             }
         }
-        if (diverIsGliding() && this.getUser().horizontalCollision){
+        if (diverIsGliding() && this.getUser() != null){
             List<BlockPos> blocksAroundUser = blocksAroundUser(this);
             blocksAroundUser.forEach(blockAroundUser -> {
                 Vector3d userPos = this.getUser().position();
