@@ -19,8 +19,8 @@ public class DiverDownWallGlide extends StandEntityAction {
     @Override
     protected ActionConditionResult checkSpecificConditions(LivingEntity user, IStandPower power, ActionTarget target) {
         DiverDownEntity diverDown = (DiverDownEntity) power.getStandManifestation();
-        if (!user.horizontalCollision && diverDown != null) {
-            if (!diverDown.isInside()) {
+        if (diverDown != null){
+            if (!user.horizontalCollision || diverDown.isInside()) {
                 if (user.level.isClientSide()) {
                     if (user instanceof PlayerEntity) {
                         return ActionConditionResult.NEGATIVE_CONTINUE_HOLD;
