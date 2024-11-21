@@ -81,21 +81,14 @@ public class InitStands {
              .standSound(InitSounds.DIVER_DOWN_DEFORM_DASH)
              .staminaCost(200)));
 
-    public static final RegistryObject<DiverDownDisassembleMob> DIVER_DOWN_MOB_DISASSEMBLE = ACTIONS.register("diver_down_mob_disassemble",
-            () -> new DiverDownDisassembleMob(new StandEntityHeavyAttack.Builder()
-                    .standWindupDuration(10)
-                    .shout(InitSounds.ANASUI_DIVER_DEFORM_DASH)
-                    .standSound(InitSounds.DIVER_DOWN_DEFORM_DASH)
-                    .staminaCost(300)));
-
     public static final RegistryObject<DiverDownHeavyPunch> DIVER_DOWN_HEAVY_PUNCH = ACTIONS.register("diver_down_heavy_punch",
             () -> new DiverDownHeavyPunch(new StandEntityHeavyAttack.Builder()
                     .shout(InitSounds.ANASUI_DIVER_HEAVY_PUNCH)
                     .punchSound(InitSounds.DIVER_DOWN_PUNCH_HEAVY)
                     .shiftVariationOf(DIVER_DOWN_PUNCH)
                     .shiftVariationOf(DIVER_DOWN_BARRAGE)
-                    .partsRequired(StandPart.ARMS)
-                    .setFinisherVariation(DIVER_DOWN_DEFORM_DASH)));
+                    .setFinisherVariation(DIVER_DOWN_DEFORM_DASH)
+                    .partsRequired(StandPart.ARMS)));
 
     public static final RegistryObject<StandEntityHeavyAttack> DIVER_DOWN_SPRING_LEGS = ACTIONS.register("diver_down_spring_legs",
             () -> new DiverDownSpringLegs(new StandEntityHeavyAttack.Builder()
@@ -113,6 +106,14 @@ public class InitStands {
                     .standPose(StandPose.HEAVY_ATTACK)
                     .partsRequired(StandPart.ARMS)));
 
+    public static final RegistryObject<DiverDownDisassembleMob> DIVER_DOWN_MOB_DISASSEMBLE = ACTIONS.register("diver_down_mob_disassemble",
+            () -> new DiverDownDisassembleMob(new StandEntityHeavyAttack.Builder()
+                    .standWindupDuration(10)
+                    .shout(InitSounds.ANASUI_DIVER_DEFORM_DASH)
+                    .standSound(InitSounds.DIVER_DOWN_DEFORM_DASH)
+                    .shiftVariationOf(DIVER_DOWN_RETRACT)
+                    .staminaCost(300)));
+
 
 
     public static final EntityStandRegistryObject<EntityStandType<StandStats>, StandEntityType<DiverDownEntity>> STAND_DIVER_DOWN = 
@@ -124,7 +125,7 @@ public class InitStands {
                             new StandAction[] {
                                     DIVER_DOWN_PUNCH.get(), 
                                     DIVER_DOWN_BARRAGE.get(),
-                                    DIVER_DOWN_SPRING_LEGS.get()
+                                    DIVER_DOWN_SPRING_LEGS.get(),
                                     },
                             new StandAction[] {
                                     DIVER_DOWN_PROTECTION.get(),

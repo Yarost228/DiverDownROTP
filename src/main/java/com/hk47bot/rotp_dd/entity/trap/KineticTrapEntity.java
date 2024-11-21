@@ -11,6 +11,8 @@ import com.hk47bot.rotp_dd.RotpDiverDownAddon;
 import com.hk47bot.rotp_dd.init.InitEntities;
 import com.hk47bot.rotp_dd.init.InitSounds;
 import com.hk47bot.rotp_dd.init.InitStands;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.material.Material;
 import net.minecraft.command.arguments.EntityAnchorArgument;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -116,7 +118,7 @@ public class KineticTrapEntity extends Entity {
         public void tick() {
             super.tick();
             tickCount++;
-            if (tickCount > 1200 && !this.isActive) {
+            if (tickCount > 1200 && !this.isActive || this.level.getBlockState(blockPosition()).getMaterial() == Material.AIR) {
                 this.remove();
             }
             if (!this.isActive){

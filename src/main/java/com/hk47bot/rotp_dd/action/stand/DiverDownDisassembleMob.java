@@ -1,5 +1,6 @@
 package com.hk47bot.rotp_dd.action.stand;
 
+import com.github.standobyte.jojo.action.Action;
 import com.github.standobyte.jojo.action.ActionConditionResult;
 import com.github.standobyte.jojo.action.ActionTarget;
 import com.github.standobyte.jojo.action.stand.StandEntityHeavyAttack;
@@ -13,7 +14,6 @@ import com.hk47bot.rotp_dd.entity.stand.stands.DiverDownEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.loot.*;
@@ -32,13 +32,15 @@ public class DiverDownDisassembleMob extends StandEntityHeavyAttack {
     @Override
     protected ActionConditionResult checkStandConditions(StandEntity stand, IStandPower power, ActionTarget target) {
         if (stand instanceof DiverDownEntity){
-            DiverDownEntity diver = (DiverDownEntity)stand;
+            DiverDownEntity diver = (DiverDownEntity) stand;
             if (diver.isInside()){
                 return ActionConditionResult.POSITIVE;
             }
         }
         return conditionMessage("dd_notinside");
     }
+
+
     @Override
     public StandEntityPunch punchEntity(StandEntity stand, Entity entity, StandEntityDamageSource dmgSource) {
         World world = stand.level;

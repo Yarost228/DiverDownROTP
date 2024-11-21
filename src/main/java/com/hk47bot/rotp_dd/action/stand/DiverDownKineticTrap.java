@@ -7,6 +7,7 @@ import com.github.standobyte.jojo.entity.stand.StandEntityTask;
 import com.github.standobyte.jojo.power.impl.stand.IStandPower;
 import com.hk47bot.rotp_dd.entity.stand.stands.DiverDownEntity;
 import com.hk47bot.rotp_dd.entity.trap.KineticTrapEntity;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 
@@ -26,7 +27,12 @@ public class DiverDownKineticTrap extends StandEntityAction {
         ActionTarget target = diverDown.aimWithThisOrUser(5, task.getTarget());
         if (target.getBlockPos() != null){
             KineticTrapEntity kineticTrap = new KineticTrapEntity(world);
-            kineticTrap.moveTo(Vector3d.atCenterOf(target.getBlockPos()));
+            if (world.getBlockState(target.getBlockPos()).isFaceSturdy(world, target.getBlockPos(), Direction.UP)){
+                kineticTrap.moveTo(Vector3d.atCenterOf(target.getBlockPos()));
+            }
+            else {
+                kineticTrap.moveTo(Vector3d.atBottomCenterOf(target.getBlockPos()).add(0, -0.5, 0));
+            }
             kineticTrap.setOwner(standEntity.getUser());
             world.addFreshEntity(kineticTrap);
         }

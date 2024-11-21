@@ -105,7 +105,7 @@ public class DiverDownEntity extends StandEntity {
                 retractStand(false);
             }
         }
-        if (diverIsGliding() && this.getUser() != null){
+        if (diverIsGliding() && this.getUser() != null && this.getUser().isAlive() && !isBeingRetracted()){
             List<BlockPos> blocksAroundUser = blocksAroundUser(this);
             blocksAroundUser.forEach(blockAroundUser -> {
                 Vector3d userPos = this.getUser().position();
@@ -153,7 +153,6 @@ public class DiverDownEntity extends StandEntity {
     public void tick() {
         super.tick();
         if (this.isInside()){
-            this.addEffect(new EffectInstance(ModStatusEffects.FULL_INVISIBILITY.get(), 5, 2));
             this.setNoPhysics(true);
         }
     }

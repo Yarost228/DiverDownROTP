@@ -69,7 +69,6 @@ public class DiverDownModel extends HumanoidStandModel<DiverDownEntity> {
 
 		rightLowerLeg.texOffs(45, 111).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, 0.0F, false);
 	}
-
 	@Override
 	protected RotationAngle[][] initSummonPoseRotations() {
 		return new RotationAngle[][] {

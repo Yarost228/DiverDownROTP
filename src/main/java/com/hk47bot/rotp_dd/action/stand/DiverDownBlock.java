@@ -6,7 +6,7 @@ import com.github.standobyte.jojo.power.impl.stand.IStandPower;
 
 public class DiverDownBlock extends StandEntityBlock {
     public DiverDownBlock(StandEntityAction.Builder builder){
-        super(builder.noResolveUnlock());
+        super(builder.noResolveUnlock().standOffsetFront());
     }
     @Override
     public boolean isUnlocked(IStandPower power){return true;}
