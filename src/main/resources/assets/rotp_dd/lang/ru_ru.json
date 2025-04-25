@@ -18,8 +18,10 @@
   "action.rotp_dd.diver_down_spring_legs" : "Ноги-пружины",
   "action.rotp_dd.diver_down_bone_shard_bomb" : "Костяная мина",
   "action.rotp_dd.diver_down_mob_disassemble" : "Разобрать моба",
+  "action.rotp_dd.diver_down_steal_item" : "Украсть предмет",
 
   "jojo.message.action_condition.dd_self" : "Мне не нужно залезать в себя...",
-  "jojo.message.action_condition.dd_notinside" : "Diver должен быть в мобе",
-  "jojo.message.action_condition.dd_already_inside" : "Diver уже сидит в этом мобе"
+  "jojo.message.action_condition.dd_notinside" : "Diver Down должен быть в мобе",
+  "jojo.message.action_condition.dd_already_inside" : "Diver Down уже сидит в этом мобе",
+  "jojo.message.action_condition.dd_target_no_inv" : "У цели нет инвентаря с предметами."
 }

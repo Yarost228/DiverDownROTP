@@ -20,6 +20,6 @@
   "action.rotp_dd.diver_down_mob_disassemble" : "Desensamblar Mob",
 
   "jojo.message.action_condition.dd_self" : "No necesito usarlo en mí mismo",
-  "jojo.message.action_condition.dd_notinside" : "Diver necesita estar dentro del mob para usarlo",
-  "jojo.message.action_condition.dd_already_inside" : "Diver ya está en fase dentro del mob"
+  "jojo.message.action_condition.dd_notinside" : "Diver Down necesita estar dentro del mob para usarlo",
+  "jojo.message.action_condition.dd_already_inside" : "Diver Down ya está en fase dentro del mob"
 }

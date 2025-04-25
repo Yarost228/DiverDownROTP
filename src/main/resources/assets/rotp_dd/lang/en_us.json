@@ -18,8 +18,11 @@
   "action.rotp_dd.diver_down_spring_legs" : "Spring Legs",
   "action.rotp_dd.diver_down_bone_shard_bomb" : "Bone Shards Mine",
   "action.rotp_dd.diver_down_mob_disassemble" : "Disassemble Mob",
+  "action.rotp_dd.diver_down_steal_item" : "Steal Item",
 
-  "jojo.message.action_condition.dd_self" : "I don't need to use it on myself",
-  "jojo.message.action_condition.dd_notinside" : "Diver needs to be inside the mob to use it",
-  "jojo.message.action_condition.dd_already_inside" : "Diver is already phased into mob"
+  "jojo.message.action_condition.dd_self" : "I don't need to use it on myself.",
+  "jojo.message.action_condition.dd_notinside" : "Diver Down needs to be inside the mob to use it.",
+  "jojo.message.action_condition.dd_already_inside" : "Diver Down is already phased into mob.",
+  "jojo.message.action_condition.dd_target_no_inv" : "The target has no inventory to steal from."
+
 }
