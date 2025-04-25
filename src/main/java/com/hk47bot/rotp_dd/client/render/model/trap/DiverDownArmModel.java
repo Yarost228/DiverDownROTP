@@ -31,8 +31,8 @@ public class DiverDownArmModel<T extends KineticTrapEntity> extends EntityModel<
 	public void setupAnim(KineticTrapEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
 		if (entity.isActive){
 			arm.visible = true;
-			arm.xRot =  entity.getViewXRot(1) * ((float)Math.PI / 180F) - 135F;
-			arm.yRot = - entity.getViewYRot(1) * ((float)Math.PI / 180F);
+			arm.xRot = - entity.getViewXRot(1) * ((float)Math.PI / 180F) - 45F;
+			arm.yRot = entity.getViewYRot(1) * ((float)Math.PI / 180F);
 			arm_move.setPos(0, 0, entity.attackTime);
 		}
 		else {

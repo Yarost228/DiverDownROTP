@@ -2,7 +2,7 @@ package com.hk47bot.rotp_dd.client.render.renderer.entity;
 
 import com.github.standobyte.jojo.client.ClientTimeStopHandler;
 import com.hk47bot.rotp_dd.RotpDiverDownAddon;
-import com.hk47bot.rotp_dd.client.render.model.trap.DiverDownArmModel;
+import com.hk47bot.rotp_dd.client.render.model.trap.DiverDownNewArmModel;
 import com.hk47bot.rotp_dd.entity.trap.KineticTrapEntity;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
@@ -19,8 +19,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class DiverDownArmRenderer extends EntityRenderer<KineticTrapEntity> {
-    private static final ResourceLocation TEXTURE_LOCATION = new ResourceLocation(RotpDiverDownAddon.MOD_ID, "textures/entity/trap/diver_down_arm.png");
-    private final DiverDownArmModel<KineticTrapEntity> model = new DiverDownArmModel<>();
+    private static final ResourceLocation TEXTURE_LOCATION = new ResourceLocation(RotpDiverDownAddon.MOD_ID, "textures/entity/stand/diver_down.png");
+    private final DiverDownNewArmModel<KineticTrapEntity> model = new DiverDownNewArmModel<>();
     private final Minecraft mc = Minecraft.getInstance();
 
     public DiverDownArmRenderer(EntityRendererManager rendererManager) {
@@ -41,7 +41,9 @@ public class DiverDownArmRenderer extends EntityRenderer<KineticTrapEntity> {
                 skyLightLevels.add(skyLightLevel);
             }
         }
-        return Collections.max(skyLightLevels);
+        return skyLightLevels.size() > 2 ?
+                Collections.max(skyLightLevels) :
+                super.getSkyLightLevel(trap, blockPos);
     }
 
     public void render(KineticTrapEntity entity, float p_225623_2_, float p_225623_3_, MatrixStack p_225623_4_, IRenderTypeBuffer p_225623_5_, int p_225623_6_) {
@@ -54,33 +56,13 @@ public class DiverDownArmRenderer extends EntityRenderer<KineticTrapEntity> {
     }
     private static ArrayList<BlockPos> getBlocksAroundPos(BlockPos pos){
         ArrayList<BlockPos> blockPosList = new ArrayList<>();
-        blockPosList.add(pos.above());
-        blockPosList.add(pos.above().north());
-        blockPosList.add(pos.above().south());
-        blockPosList.add(pos.above().east());
-        blockPosList.add(pos.above().east().north());
-        blockPosList.add(pos.above().east().south());
-        blockPosList.add(pos.above().west());
-        blockPosList.add(pos.above().west().north());
-        blockPosList.add(pos.above().west().south());
-        blockPosList.add(pos);
-        blockPosList.add(pos.north());
-        blockPosList.add(pos.south());
-        blockPosList.add(pos.east());
-        blockPosList.add(pos.east().north());
-        blockPosList.add(pos.east().south());
-        blockPosList.add(pos.west());
-        blockPosList.add(pos.west().north());
-        blockPosList.add(pos.west().south());
-        blockPosList.add(pos.below());
-        blockPosList.add(pos.below().north());
-        blockPosList.add(pos.below().south());
-        blockPosList.add(pos.below().east());
-        blockPosList.add(pos.below().east().north());
-        blockPosList.add(pos.below().east().south());
-        blockPosList.add(pos.below().west());
-        blockPosList.add(pos.below().west().north());
-        blockPosList.add(pos.below().west().south());
+        for (int yOffset = -1; yOffset <= 1; yOffset++) {
+            for (int xOffset = -1; xOffset <= 1; xOffset++) {
+                for (int zOffset = -1; zOffset <= 1; zOffset++) {
+                    blockPosList.add(pos.offset(xOffset, yOffset, zOffset));
+                }
+            }
+        }
         return blockPosList;
     }
 }
