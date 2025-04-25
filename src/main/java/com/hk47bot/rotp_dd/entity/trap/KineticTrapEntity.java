@@ -1,17 +1,11 @@
 package com.hk47bot.rotp_dd.entity.trap;
 
 import com.github.standobyte.jojo.JojoModConfig;
-import com.github.standobyte.jojo.entity.mob.HungryZombieEntity;
 import com.github.standobyte.jojo.entity.stand.StandEntity;
-import com.github.standobyte.jojo.init.power.non_stand.ModPowers;
-import com.github.standobyte.jojo.power.impl.nonstand.INonStandPower;
 import com.github.standobyte.jojo.power.impl.stand.IStandPower;
 import com.github.standobyte.jojo.util.mc.damage.DamageUtil;
-import com.hk47bot.rotp_dd.RotpDiverDownAddon;
 import com.hk47bot.rotp_dd.init.InitEntities;
 import com.hk47bot.rotp_dd.init.InitSounds;
-import com.hk47bot.rotp_dd.init.InitStands;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
 import net.minecraft.command.arguments.EntityAnchorArgument;
 import net.minecraft.entity.Entity;
@@ -26,7 +20,6 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
@@ -109,9 +102,9 @@ public class KineticTrapEntity extends Entity {
             }
             if (entity instanceof StandEntity) {
                 StandEntity stand = (StandEntity) entity;
-                if (stand == IStandPower.getStandPowerOptional(this.getOwner()).resolve().get().getStandManifestation()) return false;
+                if (getOwner() != null && stand == IStandPower.getStandPowerOptional(this.getOwner()).resolve().get().getStandManifestation()) return false;
             }
-            return entity != this.getOwner() && !entity.isAlliedTo(this.getOwner()) && !(entity instanceof ArmorStandEntity);
+            return entity != this.getOwner() && (getOwner() != null && !entity.isAlliedTo(this.getOwner())) && !(entity instanceof ArmorStandEntity);
         }
 
         @Override
@@ -122,9 +115,9 @@ public class KineticTrapEntity extends Entity {
                 this.remove();
             }
             if (!this.isActive){
-                List<LivingEntity> targets = this.level.getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(1.1D));
+                List<Entity> targets = this.level.getEntities(this, this.getBoundingBox().inflate(1.1D), entity -> {return entity instanceof LivingEntity && entity != level.getPlayerByUUID(getOwnerUUID()); });
                 if (!targets.isEmpty()) {
-                    LivingEntity target = targets.stream().findAny().get();
+                    LivingEntity target = (LivingEntity)targets.stream().findAny().get();
                     this.lookAt(EntityAnchorArgument.Type.EYES, target.getEyePosition(1));
                     targetVec = this.getLookAngle();
                     if (this.canDamage(target)) this.activate(target);
