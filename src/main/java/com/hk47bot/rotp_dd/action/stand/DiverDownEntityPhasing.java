@@ -25,6 +25,7 @@ public class DiverDownEntityPhasing extends StandEntityAction {
        protected ActionConditionResult checkStandConditions(StandEntity stand, IStandPower power, ActionTarget target) {
         Entity targetEntity = target.getEntity();
         DiverDownEntity diver = (DiverDownEntity) stand;
+        if (targetEntity == null) return ActionConditionResult.NEGATIVE;
         if (targetEntity.is(power.getUser())) {
             return conditionMessage("dd_self");
         }
@@ -36,15 +37,12 @@ public class DiverDownEntityPhasing extends StandEntityAction {
 
     @Nullable
     @Override
-    public Action<IStandPower> getVisibleAction (IStandPower power, ActionTarget target) {
+    public Action<IStandPower> replaceAction(IStandPower power, ActionTarget target) {
         DiverDownEntity diverDown = (DiverDownEntity) power.getStandManifestation();
-        if (diverDown != null){
-            if (!diverDown.isInside()){
-                return super.getVisibleAction(power, target);
+        if (diverDown != null && diverDown.isInside()) {
+                return InitStands.DIVER_DOWN_RETRACT.get();
             }
-            return InitStands.DIVER_DOWN_RETRACT.get();
-        }
-        return super.getVisibleAction(power, target);
+        return this;
     }
 
     @Override
