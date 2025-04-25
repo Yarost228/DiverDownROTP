@@ -7,7 +7,6 @@ import com.github.standobyte.jojo.init.ModStatusEffects;
 import com.github.standobyte.jojo.util.mc.MCUtil;
 import com.hk47bot.rotp_dd.init.InitStands;
 import net.minecraft.block.Blocks;
-import net.minecraft.command.arguments.EntityAnchorArgument;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
@@ -56,24 +55,19 @@ public class DiverDownEntity extends StandEntity {
         if (dataParameter == TARGET_INSIDE_ID) {
             int entityId = entityData.get(TARGET_INSIDE_ID);
             Entity entity = level.getEntity(entityId);
-            if (entity instanceof LivingEntity) {
+            if (entity instanceof LivingEntity && this.getUser() != null && this.getUser().isAlive()) {
                 targetInside = (LivingEntity) entity;
+                entityData.set(TARGET_INSIDE_ID, targetInside.getId());
             }
             else {
                 targetInside = null;
+                entityData.set(TARGET_INSIDE_ID, -1);
             }
         }
     }
     
     public void setTargetInside(@Nullable Entity entity) {
-        int entityId;
-        if (entity != null) {
-            entityId = entity.getId();
-        }
-        else {
-            entityId = -1;
-        }
-        
+        int entityId = entity != null ? entity.getId() : -1;
         entityData.set(TARGET_INSIDE_ID, entityId);
     }
 
@@ -83,6 +77,7 @@ public class DiverDownEntity extends StandEntity {
 
     public boolean isInside(){
         return entityData.get(TARGET_INSIDE_ID) != -1;
+//        return targetInside != null;
     }
 
     @Override
@@ -96,9 +91,8 @@ public class DiverDownEntity extends StandEntity {
             if (targetInside.isAlive() && !isBeingRetracted() && this.getRangeEfficiency() > 0.1) {
                 Vector3d targetPos = targetInside.position();
                 setPos(targetPos.x, targetPos.y, targetPos.z);
-                this.lookAt(EntityAnchorArgument.Type.EYES, targetPos);
-
-                return;
+                this.xRot = targetInside.xRot;
+                this.yRot = targetInside.yRot;
             }
             else {
                 setTargetInside(null);
@@ -154,6 +148,13 @@ public class DiverDownEntity extends StandEntity {
         super.tick();
         if (this.isInside()){
             this.setNoPhysics(true);
+            if (!this.level.isClientSide()){
+                this.addEffect(new EffectInstance(ModStatusEffects.FULL_INVISIBILITY.get(), 15, 0, false, false, false));
+            }
+            if (this.getUser() != null && this.distanceTo(this.getUser()) >= this.getMaxRange()){
+                this.setTargetInside(null);
+                retractStand(false);
+            }
         }
     }
     public Predicate<Entity> canTarget() {
