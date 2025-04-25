@@ -10,6 +10,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
@@ -95,7 +96,6 @@ public class DiverDownEntity extends StandEntity {
                 this.yRot = targetInside.yRot;
             }
             else {
-                setTargetInside(null);
                 retractStand(false);
             }
         }
@@ -143,6 +143,12 @@ public class DiverDownEntity extends StandEntity {
         return super.isFollowingUser() && targetInside == null;
     }
 
+    @Override
+    public void retractStand(boolean toUnsummon) {
+        super.retractStand(toUnsummon);
+        this.setTargetInside(null);
+    }
+
     @Override 
     public void tick() {
         super.tick();
@@ -152,7 +158,6 @@ public class DiverDownEntity extends StandEntity {
                 this.addEffect(new EffectInstance(ModStatusEffects.FULL_INVISIBILITY.get(), 15, 0, false, false, false));
             }
             if (this.getUser() != null && this.distanceTo(this.getUser()) >= this.getMaxRange()){
-                this.setTargetInside(null);
                 retractStand(false);
             }
         }
