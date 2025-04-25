@@ -21,15 +21,19 @@ public class DiverDownInsideProtection extends StandEntityAction {
     public DiverDownInsideProtection(Builder builder) {
         super(builder.holdType());
     }
-    @Nullable
-    @Override
-    public Action<IStandPower> replaceAction(IStandPower power, ActionTarget target) {
-        DiverDownEntity diverDown = (DiverDownEntity) power.getStandManifestation();
-        if (diverDown != null && !diverDown.isInside()) {
-            return InitStands.DIVER_DOWN_BLOCK.get();
-        }
-        return this;
-    }
+    // TODO Fix this shit somehow
+//    @Nullable
+//    @Override
+//    public Action<IStandPower> replaceAction(IStandPower power, ActionTarget target) {
+//        DiverDownEntity diverDown = (DiverDownEntity) power.getStandManifestation();
+//        System.out.println("world is "+power.getUser().level.isClientSide());
+//        System.out.println(diverDown != null && !diverDown.isInside());
+//        if (diverDown != null && !diverDown.isInside()) {
+//            return InitStands.DIVER_DOWN_BLOCK.get();
+//        }
+//        return this;
+//    }
+
 
     @Override
     protected ActionConditionResult checkStandConditions(StandEntity stand, IStandPower power, ActionTarget target) {
