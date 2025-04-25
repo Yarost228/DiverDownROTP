@@ -1,17 +1,15 @@
 package com.hk47bot.rotp_dd.client.ui.markers;
 
-import java.util.List;
-
 import com.github.standobyte.jojo.client.ui.marker.MarkerRenderer;
 import com.github.standobyte.jojo.power.impl.stand.IStandPower;
-
 import com.hk47bot.rotp_dd.RotpDiverDownAddon;
 import com.hk47bot.rotp_dd.entity.stand.stands.DiverDownEntity;
 import com.hk47bot.rotp_dd.init.AddonStands;
-import com.hk47bot.rotp_dd.init.InitStands;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.vector.Vector3d;
+
+import java.util.List;
 
 
 public class DiverDownInsideMarker extends MarkerRenderer {

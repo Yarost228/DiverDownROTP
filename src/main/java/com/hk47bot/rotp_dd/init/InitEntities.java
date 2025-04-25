@@ -1,7 +1,6 @@
 package com.hk47bot.rotp_dd.init;
 
 import com.hk47bot.rotp_dd.RotpDiverDownAddon;
-
 import com.hk47bot.rotp_dd.entity.projectile.BoneShardEntity;
 import com.hk47bot.rotp_dd.entity.trap.KineticTrapEntity;
 import net.minecraft.entity.EntityClassification;

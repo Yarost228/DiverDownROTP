@@ -1,16 +1,14 @@
 package com.hk47bot.rotp_dd;
 
 import com.hk47bot.rotp_dd.init.InitEffects;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.hk47bot.rotp_dd.init.InitEntities;
 import com.hk47bot.rotp_dd.init.InitSounds;
 import com.hk47bot.rotp_dd.init.InitStands;
-
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @Mod(RotpDiverDownAddon.MOD_ID)
 public class RotpDiverDownAddon {
