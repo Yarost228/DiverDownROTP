@@ -1,7 +1,8 @@
 package com.hk47bot.rotp_dd.action.stand;
 
 import com.github.standobyte.jojo.action.ActionTarget;
-import com.github.standobyte.jojo.action.stand.StandEntityAction;
+import com.github.standobyte.jojo.action.stand.IStandPhasedAction;
+import com.github.standobyte.jojo.action.stand.StandEntityHeavyAttack;
 import com.github.standobyte.jojo.entity.stand.StandEntity;
 import com.github.standobyte.jojo.entity.stand.StandEntityTask;
 import com.github.standobyte.jojo.power.impl.stand.IStandPower;
@@ -11,9 +12,10 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 
-public class DiverDownKineticTrap extends StandEntityAction {
-    public DiverDownKineticTrap(StandEntityAction.Builder builder){
-        super(builder);
+public class DiverDownKineticTrap extends StandEntityHeavyAttack implements IStandPhasedAction {
+
+    public DiverDownKineticTrap(StandEntityHeavyAttack.Builder builder){
+        super(builder.standOffsetFront());
     }
 
     @Override
