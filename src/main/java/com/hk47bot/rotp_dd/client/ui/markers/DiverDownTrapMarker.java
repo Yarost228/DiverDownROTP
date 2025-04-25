@@ -1,10 +1,7 @@
 package com.hk47bot.rotp_dd.client.ui.markers;
 
 import com.github.standobyte.jojo.client.ui.marker.MarkerRenderer;
-import com.github.standobyte.jojo.power.impl.stand.IStandPower;
 import com.hk47bot.rotp_dd.RotpDiverDownAddon;
-import com.hk47bot.rotp_dd.action.stand.DiverDownKineticTrap;
-import com.hk47bot.rotp_dd.entity.stand.stands.DiverDownEntity;
 import com.hk47bot.rotp_dd.entity.trap.KineticTrapEntity;
 import com.hk47bot.rotp_dd.init.AddonStands;
 import net.minecraft.client.Minecraft;
@@ -26,7 +23,7 @@ public class DiverDownTrapMarker extends MarkerRenderer {
     protected void updatePositions(List<MarkerRenderer.MarkerInstance> list, float partialTick) {
         PlayerEntity owner = mc.player;
         owner.level.getLoadedEntitiesOfClass(KineticTrapEntity.class, owner.getBoundingBox().inflate(16), trap -> trap.getOwner() == owner).forEach(trap -> {
-            list.add(new MarkerInstance(trap.position(), trap.isActive));
+            list.add(new MarkerInstance(trap.position().add(0, 0.5f, 0), trap.isActive));
         });
     }
     protected static class Marker extends MarkerRenderer.MarkerInstance {
