@@ -47,6 +47,7 @@ public class InitStands {
 
     public static final RegistryObject<StandEntityAction> DIVER_DOWN_PROTECTION = ACTIONS.register("diver_down_protection",
             () -> new DiverDownInsideProtection(new StandEntityAction.Builder()
+                    .shiftVariationOf(DIVER_DOWN_BLOCK)
                     .standSound(InitSounds.DIVER_DOWN_INSIDE_PROTECTION)));
 
           public static final RegistryObject<StandEntityAction> DIVER_DOWN_ENTITY_PHASING = ACTIONS.register("diver_down_entity_phasing",
@@ -127,7 +128,7 @@ public class InitStands {
                                     DIVER_DOWN_SPRING_LEGS.get(),
                                     },
                             new StandAction[] {
-                                    DIVER_DOWN_PROTECTION.get(),
+                                    DIVER_DOWN_BLOCK.get(),
                                     DIVER_DOWN_KINETIC_TRAP.get(),
                                     DIVER_DOWN_GLIDE.get(),
                                     DIVER_DOWN_ENTITY_PHASING.get(),
