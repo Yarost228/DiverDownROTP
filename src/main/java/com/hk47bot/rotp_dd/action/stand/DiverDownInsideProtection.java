@@ -12,7 +12,6 @@ import com.github.standobyte.jojo.power.impl.stand.IStandPower;
 import com.hk47bot.rotp_dd.entity.stand.stands.DiverDownEntity;
 import com.hk47bot.rotp_dd.init.InitSounds;
 import com.hk47bot.rotp_dd.init.InitStands;
-
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -22,20 +21,15 @@ public class DiverDownInsideProtection extends StandEntityAction {
     public DiverDownInsideProtection(Builder builder) {
         super(builder.holdType());
     }
-
     @Nullable
     @Override
-    public Action<IStandPower> getVisibleAction (IStandPower power, ActionTarget target) {
+    public Action<IStandPower> replaceAction(IStandPower power, ActionTarget target) {
         DiverDownEntity diverDown = (DiverDownEntity) power.getStandManifestation();
-        if (diverDown != null) {
-            if (diverDown.isInside()) {
-                return super.getVisibleAction(power, target);
-            }
+        if (diverDown != null && !diverDown.isInside()) {
             return InitStands.DIVER_DOWN_BLOCK.get();
         }
-        return InitStands.DIVER_DOWN_BLOCK.get();
+        return this;
     }
-
 
     @Override
     protected ActionConditionResult checkStandConditions(StandEntity stand, IStandPower power, ActionTarget target) {
