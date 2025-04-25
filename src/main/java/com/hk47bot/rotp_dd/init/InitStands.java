@@ -35,21 +35,19 @@ public class InitStands {
             () -> new StandEntityMeleeBarrage(new StandEntityMeleeBarrage.Builder()
                     .barrageHitSound(InitSounds.DIVER_DOWN_BARRAGE)));
 
-    public static final RegistryObject<StandEntityAction> DIVER_DOWN_BLOCK = ACTIONS.register("diver_down_block",
-            () -> new DiverDownBlock(new StandEntityAction.Builder()));
+    public static final RegistryObject<DiverDownBlock> DIVER_DOWN_BLOCK = ACTIONS.register("diver_down_block",
+            () -> new DiverDownBlock(new DiverDownBlock.Builder()));
 
     public static final RegistryObject<StandEntityAction> DIVER_DOWN_GLIDE = ACTIONS.register("diver_down_glide", 
      () -> new DiverDownWallGlide(new StandEntityAction.Builder()
              .holdType()
              .staminaCostTick(3F)
-             .cooldown(40)
              .resolveLevelToUnlock(2)
              .standSound(InitSounds.DIVER_DOWN_WALL_GLIDE)));
 
     public static final RegistryObject<StandEntityAction> DIVER_DOWN_PROTECTION = ACTIONS.register("diver_down_protection",
             () -> new DiverDownInsideProtection(new StandEntityAction.Builder()
-                    .standSound(InitSounds.DIVER_DOWN_INSIDE_PROTECTION)
-                    .resolveLevelToUnlock(4)));
+                    .standSound(InitSounds.DIVER_DOWN_INSIDE_PROTECTION)));
 
           public static final RegistryObject<StandEntityAction> DIVER_DOWN_ENTITY_PHASING = ACTIONS.register("diver_down_entity_phasing",
      () -> new DiverDownEntityPhasing(new StandEntityAction.Builder()
@@ -57,29 +55,36 @@ public class InitStands {
              .standSound(InitSounds.DIVER_DOWN_ENTITY_PHASING)
              .resolveLevelToUnlock(4)));
 
-    public static final RegistryObject<StandEntityAction> DIVER_DOWN_KINETIC_TRAP = ACTIONS.register("diver_down_kinetic_trap",
-            () -> new DiverDownKineticTrap(new StandEntityAction.Builder()
+    public static final RegistryObject<StandEntityHeavyAttack> DIVER_DOWN_KINETIC_TRAP = ACTIONS.register("diver_down_kinetic_trap",
+            () -> new DiverDownKineticTrap(new StandEntityHeavyAttack.Builder()
                     .shout(InitSounds.ANASUI_DIVER_ENTITY_PHASING)
-                    .standWindupDuration(10)
-                    .standRecoveryTicks(5)
-                    .cooldown(60)
+                    .cooldown(120)
                     .staminaCost(150)
-                    .standPose(StandPose.HEAVY_ATTACK_FINISHER)
-                    .holdToFire(20, false)
                     .standSound(InitSounds.DIVER_DOWN_ENTITY_PHASING)
                     .resolveLevelToUnlock(4)));
+
+    public static final RegistryObject<DiverDownDisassembleMob> DIVER_DOWN_MOB_DISASSEMBLE = ACTIONS.register("diver_down_mob_disassemble",
+            () -> new DiverDownDisassembleMob(new DiverDownDisassembleMob.Builder()
+                    .standWindupDuration(10)
+                    .shout(InitSounds.ANASUI_DIVER_DEFORM_DASH)
+                    .standSound(InitSounds.DIVER_DOWN_DEFORM_DASH)
+                    .staminaCost(300)));
 
      public static final RegistryObject<DiverDownRetract> DIVER_DOWN_RETRACT = ACTIONS.register("diver_down_retract",
      () -> new DiverDownRetract(new DiverDownRetract.Builder()
              .shout(InitSounds.ANASUI_DIVER_RETRACT)
-             .resolveLevelToUnlock(4)
+             .resolveLevelToUnlock(4).shiftVariationOf(DIVER_DOWN_MOB_DISASSEMBLE)
              .standSound(InitSounds.DIVER_DOWN_UNSUMMON)));
      
      public static final RegistryObject<StandEntityHeavyAttack> DIVER_DOWN_DEFORM_DASH = ACTIONS.register("diver_down_deform_dash", 
      () -> new DiverDownDeformDash(new StandEntityHeavyAttack.Builder()
-             .shout(InitSounds.ANASUI_DIVER_DEFORM_DASH)
+             .shout(InitSounds.ANASUI_DIVER_DEFORM_DASH).standPose(DiverDownDeformDash.DEFORM_DASH)
              .standSound(InitSounds.DIVER_DOWN_DEFORM_DASH)
              .staminaCost(200)));
+
+    public static final RegistryObject<StandAction> DIVER_DOWN_STEAL_ITEM = ACTIONS.register("diver_down_steal_item",
+            () -> new DiverDownStealItem(new StandAction.Builder().cooldown(300).holdToFire(15, false)
+                    .staminaCost(300)));
 
     public static final RegistryObject<DiverDownHeavyPunch> DIVER_DOWN_HEAVY_PUNCH = ACTIONS.register("diver_down_heavy_punch",
             () -> new DiverDownHeavyPunch(new StandEntityHeavyAttack.Builder()
@@ -106,13 +111,7 @@ public class InitStands {
                     .standPose(StandPose.HEAVY_ATTACK)
                     .partsRequired(StandPart.ARMS)));
 
-    public static final RegistryObject<DiverDownDisassembleMob> DIVER_DOWN_MOB_DISASSEMBLE = ACTIONS.register("diver_down_mob_disassemble",
-            () -> new DiverDownDisassembleMob(new StandEntityHeavyAttack.Builder()
-                    .standWindupDuration(10)
-                    .shout(InitSounds.ANASUI_DIVER_DEFORM_DASH)
-                    .standSound(InitSounds.DIVER_DOWN_DEFORM_DASH)
-                    .shiftVariationOf(DIVER_DOWN_RETRACT)
-                    .staminaCost(300)));
+
 
 
 
@@ -120,7 +119,7 @@ public class InitStands {
             new EntityStandRegistryObject<>("diver_down", 
                     STANDS, 
                     () -> new EntityStandType<StandStats>(
-                            0x75B7B5, ModStandsInit.PART_6_NAME,
+                            0x34C3C3, ModStandsInit.PART_6_NAME,
 
                             new StandAction[] {
                                     DIVER_DOWN_PUNCH.get(), 
@@ -132,6 +131,7 @@ public class InitStands {
                                     DIVER_DOWN_KINETIC_TRAP.get(),
                                     DIVER_DOWN_GLIDE.get(),
                                     DIVER_DOWN_ENTITY_PHASING.get(),
+                                    DIVER_DOWN_STEAL_ITEM.get(),
 
                             },
 
