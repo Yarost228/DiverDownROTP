@@ -1,6 +1,5 @@
 package com.hk47bot.rotp_dd.action.stand;
 
-import com.github.standobyte.jojo.action.Action;
 import com.github.standobyte.jojo.action.ActionConditionResult;
 import com.github.standobyte.jojo.action.ActionTarget;
 import com.github.standobyte.jojo.action.stand.StandEntityHeavyAttack;
@@ -9,14 +8,17 @@ import com.github.standobyte.jojo.entity.stand.StandEntity;
 import com.github.standobyte.jojo.power.impl.stand.IStandPower;
 import com.github.standobyte.jojo.util.general.GeneralUtil;
 import com.github.standobyte.jojo.util.mc.damage.StandEntityDamageSource;
-import com.hk47bot.rotp_dd.RotpDiverDownAddon;
 import com.hk47bot.rotp_dd.entity.stand.stands.DiverDownEntity;
+import com.hk47bot.rotp_dd.init.InitStands;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.loot.*;
+import net.minecraft.loot.LootContext;
+import net.minecraft.loot.LootParameterSets;
+import net.minecraft.loot.LootParameters;
+import net.minecraft.loot.LootTable;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -26,20 +28,22 @@ import java.util.List;
 import java.util.Random;
 
 public class DiverDownDisassembleMob extends StandEntityHeavyAttack {
+
     public DiverDownDisassembleMob(StandEntityHeavyAttack.Builder builder){
         super(builder);
     }
+
     @Override
     protected ActionConditionResult checkStandConditions(StandEntity stand, IStandPower power, ActionTarget target) {
         if (stand instanceof DiverDownEntity){
             DiverDownEntity diver = (DiverDownEntity) stand;
-            if (diver.isInside()){
+            LivingEntity targeted = diver.getTargetInside();
+            if (targeted.getHealth()/targeted.getMaxHealth() <= 0.25F){
                 return ActionConditionResult.POSITIVE;
             }
         }
-        return conditionMessage("dd_notinside");
+        return ActionConditionResult.NEGATIVE;
     }
-
 
     @Override
     public StandEntityPunch punchEntity(StandEntity stand, Entity entity, StandEntityDamageSource dmgSource) {
@@ -50,7 +54,6 @@ public class DiverDownDisassembleMob extends StandEntityHeavyAttack {
         if (!world.isClientSide()){
             if (!(target instanceof PlayerEntity)) {
                 ResourceLocation resourcelocation = target.getLootTable();
-                RotpDiverDownAddon.getLogger().info(resourcelocation);
                 LootTable loottable = target.getServer().getLootTables().get(resourcelocation);
                 LootContext.Builder contextBuilder = new LootContext.Builder((ServerWorld) world).withRandom(new Random())
                         .withParameter(LootParameters.DIRECT_KILLER_ENTITY, stand.getUser())
@@ -63,7 +66,7 @@ public class DiverDownDisassembleMob extends StandEntityHeavyAttack {
                 GeneralUtil.doFractionTimes(() -> {
                     LootContext ctx = contextBuilder.create(LootParameterSets.ENTITY);
                     List<ItemStack> loot = loottable.getRandomItems(ctx);
-                    RotpDiverDownAddon.getLogger().info(loot);
+//                    RotpDiverDownAddon.getLogger().info(loot);
                     for (ItemStack itemStack : loot) {
                         if (itemStack.getItem() != Items.SADDLE) {
                             target.spawnAtLocation(itemStack);
@@ -81,5 +84,10 @@ public class DiverDownDisassembleMob extends StandEntityHeavyAttack {
         return super.punchEntity(stand, target, dmgSource)
                 .addKnockback(0.5F + stand.getLastHeavyFinisherValue())
                 .disableBlocking((float) stand.getProximityRatio(entity) - 0.25F);
+    }
+
+    @Override
+    public boolean isUnlocked(IStandPower power) {
+        return InitStands.DIVER_DOWN_ENTITY_PHASING.get().isUnlocked(power);
     }
 }
