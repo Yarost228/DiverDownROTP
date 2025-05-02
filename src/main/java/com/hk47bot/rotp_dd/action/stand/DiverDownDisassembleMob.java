@@ -38,7 +38,7 @@ public class DiverDownDisassembleMob extends StandEntityHeavyAttack {
         if (stand instanceof DiverDownEntity){
             DiverDownEntity diver = (DiverDownEntity) stand;
             LivingEntity targeted = diver.getTargetInside();
-            if (targeted.getHealth()/targeted.getMaxHealth() <= 0.25F){
+            if (targeted.getHealth() <= diver.getAttackDamage()){
                 return ActionConditionResult.POSITIVE;
             }
         }
