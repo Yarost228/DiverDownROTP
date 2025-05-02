@@ -115,7 +115,7 @@ public class KineticTrapEntity extends Entity {
                 this.remove();
             }
             if (!this.isActive){
-                List<Entity> targets = this.level.getEntities(this, this.getBoundingBox().inflate(1.1D), entity -> {return entity instanceof LivingEntity && entity != level.getPlayerByUUID(getOwnerUUID()); });
+                List<Entity> targets = this.level.getEntities(this, this.getBoundingBox().inflate(1.1D), entity -> entity instanceof LivingEntity && entity != (getOwnerUUID() == null ? level.getPlayerByUUID(getOwnerUUID()): null));
                 if (!targets.isEmpty()) {
                     LivingEntity target = (LivingEntity)targets.stream().findAny().get();
                     this.lookAt(EntityAnchorArgument.Type.EYES, target.getEyePosition(1));
