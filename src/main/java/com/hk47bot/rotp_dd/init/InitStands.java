@@ -90,7 +90,7 @@ public class InitStands {
             () -> new DiverDownStealItem(new StandAction.Builder()
                     .cooldown(300)
                     .holdToFire(15, false)
-                    .resolveLevelToUnlock(3)
+                    .resolveLevelToUnlock(2)
                     .staminaCost(300)));
 
     public static final RegistryObject<DiverDownHeavyPunch> DIVER_DOWN_HEAVY_PUNCH = ACTIONS.register("diver_down_heavy_punch",
