@@ -101,8 +101,12 @@ public class DiverDownStealItem extends StandAction {
                         }
                         if (villager instanceof VillagerEntity){
                             VillagerEntity villagerEntity = (VillagerEntity) villager;
-                            villagerEntity.setVillagerXp(Math.max(villager.getVillagerXp()-NEXT_LEVEL_XP_THRESHOLDS[villagerEntity.getVillagerData().getLevel()]/10, 0));
+                            villagerEntity.setVillagerXp(Math.max(villager.getVillagerXp()-NEXT_LEVEL_XP_THRESHOLDS[villagerEntity.getVillagerData().getLevel()-1]/5, 0));
                             if (villager.getVillagerXp() <= getMinXpPerLevel(villagerEntity.getVillagerData().getLevel())) villagerEntity.setVillagerData(villagerEntity.getVillagerData().setLevel(villagerEntity.getVillagerData().getLevel()-1));
+                            if (villagerEntity.getOffers().size() > villagerEntity.getVillagerData().getLevel() * 2){
+                                villager.getOffers().remove(0);
+                                villager.getOffers().remove(0);
+                            }
                         }
                         else if (villager instanceof WanderingTraderEntity){
                             if (needsToRestock(villager)){
@@ -111,16 +115,16 @@ public class DiverDownStealItem extends StandAction {
                                 villagerInventory.add(new ItemStack(Items.LEAD));
                                 villagerInventory.add(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.LONG_INVISIBILITY));
                                 VillagerEntity nitwit = new VillagerEntity(EntityType.VILLAGER, world);
-                                nitwit.moveTo(villager.position());
                                 nitwit.load(villager.getPersistentData());
                                 nitwit.setVillagerData(nitwit.getVillagerData().setProfession(VillagerProfession.NITWIT));
+                                nitwit.moveTo(villager.position());
                                 villager.remove();
                                 world.addFreshEntity(nitwit);
                             }
                         }
                         if (!villagerInventory.isEmpty()){
                             int index = random.nextInt(villagerInventory.size());
-                            stealItemFromArrayList(player, villagerInventory, index);
+                            if (!world.isClientSide()) stealItemFromArrayList(player, villagerInventory, index);
                         }
                      }
             }
