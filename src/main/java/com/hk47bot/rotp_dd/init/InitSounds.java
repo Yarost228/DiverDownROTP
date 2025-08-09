@@ -1,15 +1,14 @@
 package com.hk47bot.rotp_dd.init;
 
-import java.util.function.Supplier;
-
 import com.github.standobyte.jojo.util.mc.OstSoundList;
 import com.hk47bot.rotp_dd.RotpDiverDownAddon;
-
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.function.Supplier;
 
 public class InitSounds {
     public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, RotpDiverDownAddon.MOD_ID);
@@ -55,6 +54,9 @@ public class InitSounds {
 
     public static final RegistryObject<SoundEvent> DIVER_DOWN_WALL_GLIDE = SOUNDS.register("diver_down_glide",
             () -> new SoundEvent(new ResourceLocation(RotpDiverDownAddon.MOD_ID, "diver_down_glide")));
+
+    public static final RegistryObject<SoundEvent> DIVER_DOWN_WALL_GLIDING = SOUNDS.register("diver_down_gliding",
+            () -> new SoundEvent(new ResourceLocation(RotpDiverDownAddon.MOD_ID, "diver_down_gliding")));
 
     public static final RegistryObject<SoundEvent> DIVER_DOWN_ENTITY_PHASING = SOUNDS.register("diver_down_entity_phasing",
             () -> new SoundEvent(new ResourceLocation(RotpDiverDownAddon.MOD_ID, "diver_down_entity_phasing")));

@@ -1,0 +1,27 @@
+{
+  "entity.rotp_dd.diver_down" : "Diver Down",
+  "stand.rotp_dd.diver_down" : "Diver Down",
+
+  "effect.rotp_dd.spring_legs": "Ноги-Пружины",
+  "effect.rotp_dd.bone_shard_bomb": "Костяная Мина",
+
+  "action.rotp_dd.diver_down_punch": "Удар",
+  "action.rotp_dd.diver_down_barrage": "Шквал ударов",
+  "action.rotp_dd.diver_down_heavy_punch" : "Сильный удар",
+  "action.rotp_dd.diver_down_deform_dash" : "Деформирующий рывок",
+  "action.rotp_dd.diver_down_block" : "Блокирование",
+  "action.rotp_dd.diver_down_glide" : "Скольжение по стене",
+  "action.rotp_dd.diver_down_entity_phasing" : "Проникнуть в моба",
+  "action.rotp_dd.diver_down_protection" : "Защитить моба",
+  "action.rotp_dd.diver_down_retract" : "Вернуть стенд",
+  "action.rotp_dd.diver_down_kinetic_trap" : "Кинетическая ловушка",
+  "action.rotp_dd.diver_down_spring_legs" : "Ноги-пружины",
+  "action.rotp_dd.diver_down_bone_shard_bomb" : "Костяная мина",
+  "action.rotp_dd.diver_down_mob_disassemble" : "Разобрать моба",
+  "action.rotp_dd.diver_down_steal_item" : "Украсть предмет",
+
+  "jojo.message.action_condition.dd_self" : "Мне не нужно залезать в себя...",
+  "jojo.message.action_condition.dd_notinside" : "Diver Down должен быть в мобе",
+  "jojo.message.action_condition.dd_already_inside" : "Diver Down уже сидит в этом мобе",
+  "jojo.message.action_condition.dd_target_no_inv" : "У цели нет инвентаря с предметами."
+}

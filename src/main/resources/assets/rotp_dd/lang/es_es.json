@@ -1,0 +1,25 @@
+{
+  "entity.rotp_dd.diver_down" : "Diver Drive",
+  "stand.rotp_dd.diver_down" : "Diver Drive",
+
+  "effect.rotp_dd.spring_legs": "Piernas Resorte",
+  "effect.rotp_dd.bone_shard_bomb": "Mina de Fragmentos Óseos",
+
+  "action.rotp_dd.diver_down_punch": "Golpe",
+  "action.rotp_dd.diver_down_barrage": "Ráfaga de Golpes",
+  "action.rotp_dd.diver_down_heavy_punch" : "Golpe Pesado",
+  "action.rotp_dd.diver_down_deform_dash" : "Carrera Deformada",
+  "action.rotp_dd.diver_down_block" : "Bloqueo",
+  "action.rotp_dd.diver_down_glide" : "Deslizarse por la Pared",
+  "action.rotp_dd.diver_down_entity_phasing" : "Fase en el Mob",
+  "action.rotp_dd.diver_down_protection" : "Protección de Mob",
+  "action.rotp_dd.diver_down_retract" : "Retraer Stand",
+  "action.rotp_dd.diver_down_kinetic_trap" : "Trampa Cinética",
+  "action.rotp_dd.diver_down_spring_legs" : "Piernas Resorte",
+  "action.rotp_dd.diver_down_bone_shard_bomb" : "Mina de Fragmentos Óseos",
+  "action.rotp_dd.diver_down_mob_disassemble" : "Desensamblar Mob",
+
+  "jojo.message.action_condition.dd_self" : "No necesito usarlo en mí mismo",
+  "jojo.message.action_condition.dd_notinside" : "Diver Down necesita estar dentro del mob para usarlo",
+  "jojo.message.action_condition.dd_already_inside" : "Diver Down ya está en fase dentro del mob"
+}

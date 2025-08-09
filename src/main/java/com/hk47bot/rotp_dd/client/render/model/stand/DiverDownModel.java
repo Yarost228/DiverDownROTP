@@ -44,32 +44,31 @@ public class DiverDownModel extends HumanoidStandModel<DiverDownEntity> {
 		leftArm.texOffs(22, 101).addBox(-2.0F, -2.0F, -2.0F, 4.0F, 6.0F, 4.0F, 0.0F, false);
 		leftArm.texOffs(22, 93).addBox(-2.0F, -2.0F, -2.0F, 4.0F, 4.0F, 4.0F, 0.1F, false);
 
-		leftArmJoint.texOffs(24, 121).addBox(-1.5F, -1.5F, -1.5F, 3.0F, 3.0F, 3.0F, -0.1F, false);
+		leftArmJoint.texOffs(24, 111).addBox(-1.5F, -1.5F, -1.5F, 3.0F, 3.0F, 3.0F, -0.1F, false);
 
-		leftForeArm.texOffs(22, 111).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, -0.01F, false);
+		leftForeArm.texOffs(22, 117).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, 0.0F, false);
 
 		rightArm.texOffs(0, 93).addBox(-2.0F, -2.0F, -2.0F, 4.0F, 4.0F, 4.0F, 0.1F, false);
 		rightArm.texOffs(0, 101).addBox(-2.0F, -2.0F, -2.0F, 4.0F, 6.0F, 4.0F, 0.0F, false);
 
-		rightArmJoint.texOffs(2, 121).addBox(-1.5F, -1.5F, -1.5F, 3.0F, 3.0F, 3.0F, -0.1F, false);
+		rightArmJoint.texOffs(2, 111).addBox(-1.5F, -1.5F, -1.5F, 3.0F, 3.0F, 3.0F, -0.1F, false);
 
-		rightForeArm.texOffs(0, 111).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, -0.001F, false);
+		rightForeArm.texOffs(0, 117).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, 0.0F, false);
 
 		leftLeg.texOffs(67, 101).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, 0.0F, false);
 
-		leftLegJoint.texOffs(69, 121).addBox(-1.5F, -1.375F, -0.5F, 3.0F, 3.0F, 3.0F, -0.1F, false);
-		leftLegJoint.texOffs(71, 96).addBox(-1.5F, -1.625F, -1.5F, 3.0F, 3.0F, 1.0F, -0.2F, false);
+		leftLegJoint.texOffs(69, 121).addBox(-1.5F, -1.5F, -1.5F, 3.0F, 3.0F, 3.0F, -0.1F, false);
+		leftLegJoint.texOffs(71, 96).addBox(-1.5F, -1.75F, -2.5F, 3.0F, 3.0F, 1.0F, -0.2F, false);
 
 		leftLowerLeg.texOffs(67, 111).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, 0.0F, false);
 
 		rightLeg.texOffs(45, 101).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, 0.0F, false);
 
-		rightLegJoint.texOffs(47, 121).addBox(-1.5F, -1.375F, -0.5F, 3.0F, 3.0F, 3.0F, -0.1F, false);
-		rightLegJoint.texOffs(49, 96).addBox(-1.5F, -1.625F, -1.5F, 3.0F, 3.0F, 1.0F, -0.2F, false);
+		rightLegJoint.texOffs(47, 121).addBox(-1.5F, -1.5F, -1.5F, 3.0F, 3.0F, 3.0F, -0.1F, false);
+		rightLegJoint.texOffs(49, 96).addBox(-1.5F, -1.75F, -2.5F, 3.0F, 3.0F, 1.0F, -0.2F, false);
 
 		rightLowerLeg.texOffs(45, 111).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, 0.0F, false);
 	}
-
 	@Override
 	protected RotationAngle[][] initSummonPoseRotations() {
 		return new RotationAngle[][] {

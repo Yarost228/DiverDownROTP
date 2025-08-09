@@ -1,0 +1,25 @@
+{
+  "entity.rotp_dd.diver_down" : "怒海潜将",
+  "stand.rotp_dd.diver_down" : "怒海潜将",
+
+  "effect.rotp_dd.spring_legs": "弹簧腿",
+  "effect.rotp_dd.bone_shard_bomb": "碎骨",
+
+  "action.rotp_dd.diver_down_punch": "轻击",
+  "action.rotp_dd.diver_down_barrage": "连打",
+  "action.rotp_dd.diver_down_heavy_punch" : "重拳",
+  "action.rotp_dd.diver_down_deform_dash" : "变形拳",
+  "action.rotp_dd.diver_down_block" : "防御",
+  "action.rotp_dd.diver_down_glide" : "爬墙",
+  "action.rotp_dd.diver_down_entity_phasing" : "进入生物",
+  "action.rotp_dd.diver_down_protection" : "保护生物",
+  "action.rotp_dd.diver_down_retract" : "召回替身",
+  "action.rotp_dd.diver_down_kinetic_trap" : "动能陷阱",
+  "action.rotp_dd.diver_down_spring_legs" : "弹簧腿改造",
+  "action.rotp_dd.diver_down_bone_shard_bomb" : "碎骨陷阱改造",
+  "action.rotp_dd.diver_down_mob_disassemble" : "解除改造",
+
+  "jojo.message.action_condition.dd_self" : "我不需要对我自己使用",
+  "jojo.message.action_condition.dd_notinside" : "怒海潜将需要先潜入到生物体内",
+  "jojo.message.action_condition.dd_already_inside" : "怒海潜将已经在生物体内了"
+}

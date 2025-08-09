@@ -7,7 +7,7 @@ import com.github.standobyte.jojo.entity.stand.StandEntity;
 import com.github.standobyte.jojo.entity.stand.StandEntityTask;
 import com.github.standobyte.jojo.power.impl.stand.IStandPower;
 import com.hk47bot.rotp_dd.entity.stand.stands.DiverDownEntity;
-
+import com.hk47bot.rotp_dd.init.InitStands;
 import net.minecraft.world.World;
 
 public class DiverDownRetract extends StandEntityAction {
@@ -18,10 +18,12 @@ public class DiverDownRetract extends StandEntityAction {
     protected ActionConditionResult checkStandConditions(StandEntity stand, IStandPower power, ActionTarget target) {
         if (stand instanceof DiverDownEntity){
             DiverDownEntity diver = (DiverDownEntity)stand;
-            if (diver.isInside())
-            return ActionConditionResult.POSITIVE;
+            if (diver.isInside()){
+                return ActionConditionResult.POSITIVE;
+            }
+            return conditionMessage("dd_notinside");
         }
-        return conditionMessage("dd_notinside");
+        return ActionConditionResult.NEGATIVE;
     }
     @Override
     public void standPerform(World world, StandEntity standEntity, IStandPower userPower, StandEntityTask task) {
@@ -29,5 +31,9 @@ public class DiverDownRetract extends StandEntityAction {
             DiverDownEntity diver = (DiverDownEntity) standEntity;
             diver.setTargetInside(null);
         }
+    }
+    @Override
+    public boolean isUnlocked(IStandPower power) {
+        return InitStands.DIVER_DOWN_ENTITY_PHASING.get().isUnlocked(power);
     }
 }

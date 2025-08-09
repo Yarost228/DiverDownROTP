@@ -31,7 +31,7 @@ logoFile="examplemod.png" #optional
 # A text field displayed in the mod UI
 # credits="Thanks for this example mod goes to Java" #optional
 # A text field displayed in the mod UI
-authors="HK47bot, StandoByte, Kyofu Bunny (sponsor), Agamatius (sounds)" #optional
+authors="HK47bot, Agamatius (sounds), FriendlyCoop (suggestion author)" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
 An addon for Ripples of the Past mod, adding a new Stand - Diver Down.
